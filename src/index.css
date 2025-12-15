@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark theme - Primary colors */
+    --background: 220 20% 8%;
+    --foreground: 210 20% 95%;
+
+    /* Cards and surfaces */
+    --card: 220 18% 11%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 18% 13%;
+    --popover-foreground: 210 20% 95%;
+
+    /* Primary - Cyan/Teal accent */
+    --primary: 185 70% 50%;
+    --primary-foreground: 220 20% 8%;
+
+    /* Secondary */
+    --secondary: 220 16% 16%;
+    --secondary-foreground: 210 20% 90%;
+
+    /* Muted */
+    --muted: 220 14% 14%;
+    --muted-foreground: 215 15% 55%;
+
+    /* Accent */
+    --accent: 185 60% 45%;
+    --accent-foreground: 220 20% 8%;
+
+    /* Destructive */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders and inputs */
+    --border: 220 14% 18%;
+    --input: 220 14% 18%;
+    --ring: 185 70% 50%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 220 20% 6%;
+    --sidebar-foreground: 210 20% 85%;
+    --sidebar-primary: 185 70% 50%;
+    --sidebar-primary-foreground: 220 20% 8%;
+    --sidebar-accent: 220 16% 12%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 220 14% 14%;
+    --sidebar-ring: 185 70% 50%;
+
+    /* Custom tokens */
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --info: 199 89% 48%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(185 70% 50%), hsl(200 80% 45%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220 18% 13%), hsl(220 20% 8%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(185 70% 50% / 0.15), transparent 70%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsl(220 20% 0% / 0.5);
+    --shadow-md: 0 4px 12px hsl(220 20% 0% / 0.4);
+    --shadow-lg: 0 8px 30px hsl(220 20% 0% / 0.5);
+    --shadow-glow: 0 0 40px hsl(185 70% 50% / 0.2);
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 185 70% 40%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 185 60% 45%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 185 70% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+}
+
+@layer components {
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  /* Glow effect */
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Pulse animation for loading states */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Chat message animations */
+  .message-enter {
+    animation: message-slide-in 0.3s ease-out;
+  }
+
+  /* File upload drop zone */
+  .drop-zone {
+    @apply border-2 border-dashed border-border rounded-xl transition-all duration-300;
+  }
+
+  .drop-zone-active {
+    @apply border-primary bg-primary/5;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(185 70% 50% / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(185 70% 50% / 0.4);
+  }
+}
+
+@keyframes message-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+}

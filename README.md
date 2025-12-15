@@ -2,7 +2,7 @@
 
 A full-stack AI-powered PDF Question Answering system that allows you to upload PDF documents and chat with them using natural language queries. Built with FastAPI, React, LangChain, Groq, and MongoDB Atlas Vector Search.
 
-![DocuChat Preview](docs/preview.png)
+
 
 ## Features
 
@@ -207,3 +207,4 @@ See `backend/env.example` for all available options.
 - Check browser console for CORS errors
 - Verify `VITE_API_BASE_URL` matches your backend URL
 
+![DocuChat Preview](docs/preview.png)

@@ -1,0 +1,27 @@
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+python-multipart==0.0.20
+pydantic==2.10.3
+pydantic-settings==2.6.1
+
+# MongoDB
+pymongo==4.10.1
+
+# LangChain
+langchain==0.3.13
+langchain-core==0.3.28
+langchain-text-splitters==0.3.4
+langchain-community==0.3.13
+langchain-groq==0.2.1
+langchain-huggingface==0.1.2
+
+# PDF + Embeddings
+pypdf==5.1.0
+sentence-transformers==3.3.1
+tf-keras>=2.15.0
+# CRITICAL: Do NOT install keras or keras-core (Keras 3) - only use tf-keras for transformers compatibility
+# If keras 3 is installed, transformers will fail. Uninstall with: pip uninstall -y keras keras-core
+
+
+
+
